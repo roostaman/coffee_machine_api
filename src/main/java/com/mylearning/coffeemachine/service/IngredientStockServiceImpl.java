@@ -10,10 +10,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class IngredientStockServiceImpl implements IngredientStockService {
 
     private IngredientStockRepository ingredientStockRepository;
+
+    public IngredientStockServiceImpl(IngredientStockRepository ingredientStockRepository) {
+        this.ingredientStockRepository = ingredientStockRepository;
+    }
 
     @Override
     public IngredientStock updateStock(IngredientStock newIngredientStock) {

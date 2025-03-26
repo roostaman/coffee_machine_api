@@ -12,17 +12,24 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
     private DrinkStatRepository drinkStatRepository;
 
+    public OrderServiceImpl(OrderRepository orderRepository, DrinkStatRepository drinkStatRepository) {
+        this.orderRepository = orderRepository;
+        this.drinkStatRepository = drinkStatRepository;
+    }
+
     @Override
     public Order saveOrder(Drink theDrink) {
-        Order order = new Order();
-        order.setDrink(theDrink);
-        order.setOrderDate(LocalDateTime.now());
+//        Order order = new Order();
+//        order.setDrink(theDrink);
+//        order.setOrderDate(LocalDateTime.now());
+
+        Order order = new Order(theDrink, LocalDateTime.now());
         return orderRepository.save(order);
     }
 

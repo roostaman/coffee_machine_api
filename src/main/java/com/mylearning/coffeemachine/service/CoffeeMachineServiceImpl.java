@@ -5,6 +5,7 @@ import com.mylearning.coffeemachine.model.IngredientStock;
 import com.mylearning.coffeemachine.model.Order;
 import com.mylearning.coffeemachine.repository.OrderRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class CoffeeMachineServiceImpl implements CoffeeMachineService {
 
     private DrinkService drinkService;
@@ -23,6 +24,12 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
     private static final LocalTime START_TIME = LocalTime.of(8, 0);
     private static final LocalTime END_TIME = LocalTime.of(17, 0);
 
+    @Autowired
+    public CoffeeMachineServiceImpl(DrinkService drinkService, IngredientStockService ingredientStockService, OrderService orderService) {
+        this.drinkService = drinkService;
+        this.ingredientStockService = ingredientStockService;
+        this.orderService = orderService;
+    }
 
     @Override
     public String makeDrink(String drinkName) {

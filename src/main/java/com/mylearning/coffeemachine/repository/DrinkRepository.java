@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface DrinkRepository extends JpaRepository<Drink, Long> {
 
-    Drink findByName(String name);
+    Drink findByName(String drink);
 }

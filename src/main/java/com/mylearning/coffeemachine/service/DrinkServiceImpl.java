@@ -12,10 +12,14 @@ import java.util.List;
 import java.util.Locale;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class DrinkServiceImpl implements DrinkService {
 
     private DrinkRepository drinkRepository;
+
+    public DrinkServiceImpl(DrinkRepository drinkRepository) {
+        this.drinkRepository = drinkRepository;
+    }
 
     @Override
     public Drink addNewDrink(Drink theDrink) {
